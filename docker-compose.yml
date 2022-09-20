@@ -1,0 +1,13 @@
+version: "3.0"
+
+services:
+  rust:
+    container_name: rust-gs
+    image: rust-gs:latest
+    build:
+      context: .
+      dockerfile: ./Docker/rust/Dockerfile
+    volumes:
+      - .:/volume
+      - $HOME/.ssh:/home/container-user/.ssh
+    tty: true
