@@ -16,5 +16,6 @@ down: ## Down the docker environment
 
 ## ——  Rust container  —————————————————————————————————————————
 enter: ## Access to container
-	docker exec -u container-user -ti rust-gs /usr/bin/fish
+	docker exec -u container-user -ti rust-gs /bin/bash
+	#docker exec -u container-user -ti rust-gs /usr/bin/fish
 

@@ -3,7 +3,7 @@ FROM rust:1.63
 WORKDIR /volume
 
 RUN apt-get update \
-    && apt-get install fish git vim openssh-client sudo -y \
+    && apt-get install git vim openssh-client sudo -y \
     && groupadd -g 1000 container-user \
     && useradd -d /home/container-user -s /bin/bash -u 1000 -g 1000 container-user \
     && mkdir /home/container-user \
