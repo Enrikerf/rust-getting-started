@@ -1,9 +1,9 @@
 use crate::application::create_user::{create_user_command::CreateUserCommand, create_user_command_handler::CreateUserCommandHandler};
 use crate::infrastructure::create_user::create_user_controller::CreateUserController;
 
-pub struct Configuration;
+pub struct Server;
 
-impl Configuration {
+impl Server {
     pub fn new() -> Self {
         return Self {};
     }
