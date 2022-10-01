@@ -8,12 +8,8 @@ impl Server {
         return Self {};
     }
     pub fn use_app(&self) {
-        let command = CreateUserCommand {
-            id: "id".to_string(),
-            name: "name".to_string(),
-        };
         let command_handler = CreateUserCommandHandler {};
         let controller = CreateUserController { create_user_use_case: command_handler };
-        controller.create(command)
+        controller.create();
     }
 }

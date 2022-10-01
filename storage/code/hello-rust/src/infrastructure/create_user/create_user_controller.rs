@@ -1,3 +1,8 @@
+use std::fmt::Error;
+
+use uuid::Uuid;
+
+use crate::{Id, Name};
 use crate::application::create_user::create_user_command::CreateUserCommand;
 use crate::application::create_user::create_user_use_case::CreateUserUseCase;
 
@@ -6,9 +11,17 @@ pub struct CreateUserController<T: CreateUserUseCase> {
 }
 
 impl<T: CreateUserUseCase> CreateUserController<T> {
-    //https://practice.rs/generics-traits/traits.html
-    //https://github.com/sunface/rust-by-practice/blob/master/solutions/generics-traits/generics.md
-    pub fn create(&self, create_user_command: CreateUserCommand) {
-        &self.create_user_use_case.create(create_user_command);
+    pub fn create(&self) -> Result<Uuid, Error> {
+        let uuid_parse_result = Uuid::parse_str("");
+        let uuid = match uuid_parse_result {
+            Ok(uuid) => uuid,
+            Err(error) => return Err(Default::default()),
+        };
+        let command = CreateUserCommand {
+            id: Id { value: uuid },
+            name: Name { value: "name".to_string() },
+        };
+        &self.create_user_use_case.create(command);
+        return Ok(uuid);
     }
 }

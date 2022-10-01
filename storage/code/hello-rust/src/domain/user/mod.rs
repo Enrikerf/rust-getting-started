@@ -13,7 +13,7 @@ pub struct User {
     pub id: Id,
     pub name: Name,
     events: Vec::<Box<dyn DomainEvent>>,
-    _secret: (),
+    _constructor_locked: (),
 }
 
 
@@ -25,9 +25,8 @@ impl User {
             id,
             name,
             events,
-            _secret: (),
+            _constructor_locked: (),
         };
     }
-    pub fn add_event(&self) {}
     pub fn get_events(&self) -> &Vec::<Box<dyn DomainEvent>> { return &self.events; }
 }
